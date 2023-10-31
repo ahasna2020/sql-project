@@ -12,7 +12,7 @@ Which csv can be considered the absolute correct one?
 **Cleanup unit price**
 select unit_price, round(unit_price::numeric/1000000,2) from analytics;
 
---adding new column so raw data is left intact in original column
+*adding new column so raw data is left intact in original column*
 alter table if exists analytics add unit_price_new numeric;
 
 update analytics

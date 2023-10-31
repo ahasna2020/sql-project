@@ -4,7 +4,7 @@
 ### To transform and analyze the dataset provided for an ecommerce portal to summarize data trends, top performing products, top sales regions, ordering trends for products by area etc.
 
 ## Process
-### As a first step, a new database called "ecommerce" was created. Subsequently, tables for each of the datasets were created and loaded into the database. Where possibile, primary keys were applied.
+### As a first step, a new database called "ecommerce" was created. Subsequently, tables for each of the datasets were created and loaded into the database. Where possibile, primary keys were applied. Review file SQL_Script.sql for details of the table creation and loading process.
 ### As a second step, all the datasets provided were analyzed to understand the data in it.
 ### As a third step, effort was made to cleanup data where possible, derive connections between tables, check correctness of data provided etc.
 ### As a fourth step, the queries to derive data trends were formulated to arrive at conclusions.
@@ -17,7 +17,7 @@ Amongst products, Google NEST products topped the list followed by Men's and Wom
 
 
 ## Challenges 
-There are too many vital columns with missing information, this is going to negatively impact the data analysis. 
+There were too many vital columns such as city, totaltransactionrevenue,productquantity with missing information, this is going to negatively impact the data analysis. 
 
 Examples of some vital information missing are as below:
 
@@ -27,4 +27,4 @@ Examples of some vital information missing are as below:
 4. Could not make much use of sales_by_sku or sales_report datasets due to inadequate means to uniquely connect with all_sessions table.
 
 ## Future Goals
-IF I had more time, I would try to find a direct connection between data in all_sessions table to other tables such as analytics, sales_by_sku and sales_report tables to be able to gather more data insights.
+If I had more time, I would try to establish more co-relation between data in all_sessions table to other tables such as analytics, sales_by_sku and sales_report tables to be able to gather more data insights.

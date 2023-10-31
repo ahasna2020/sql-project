@@ -9,6 +9,10 @@ Examples of some vital information missing are as below:
 3. Most of the rows in all_sessions had the totalrevenue unavailable, hence leading to the assumption that the rest of the rows in the table did not result in any successful transaction/order.
 4. Could not make much use of sales_by_sku or sales_report datasets due to inadequate means to uniquely connect with all_sessions table.
 
+select count(*) from all_sessions where city is null;
+select count(*) from all_sessions where fullvisitorid is null;
+select count(*) from all_sessions where country is null;
+select count(*) from all_sessions where totaltransactionrevenue is null;
 
 
 # QA Process:
@@ -46,26 +50,30 @@ group by sku,total_ordered;
 
 **Verify total ordered in sales_by_sku and sales_report match**
 
-select productsku, a.total_ordered, b.total_ordered from sales_report a
+select productsku, a.total_ordered, b.total_ordered 
+from sales_report a
 join sales_by_sku b using (productsku)
 where  a.total_ordered <>b.total_ordered ;
 
 *0 rows returned*
 
 **Check if there are SKUs in sales_by_sku without a matching record in "products" master table**
-select * from sales_by_sku a
+select * 
+from sales_by_sku a
 where not exists (select 1 from products where sku=a.productsku);
 
 *8 rows returned*
 
 **Check if there are SKUs in sales_report without a matching record in "products" master table**
-select * from sales_report a
+select * 
+from sales_report a
 where not exists (select 1 from products where sku=a.productsku);
 
 *0 rows returned*
 
 **Check if there are SKUs in all_sessions without a matching record in "products" master table**
-select * from all_sessions a
+select * 
+from all_sessions a
 where not exists (select 1 from products where sku=a.productsku);
 
 *2033 rows affected*
